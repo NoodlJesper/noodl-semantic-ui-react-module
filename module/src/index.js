@@ -1,4 +1,6 @@
 const Noodl = require('@noodl/noodl-sdk');
+import { Button } from 'semantic-ui-react'
+
 
 function MyCustomReactComponent(props) {
 	const style = {
@@ -9,7 +11,7 @@ function MyCustomReactComponent(props) {
 		marginBottom: props.marginBottom
 	};
 
-	return <div style={style} onClick={props.onClick} >{props.children}</div>
+	return <Button onClick={props.onClick}>Click Here</Button>
 }
 
 const MyCustomReactComponentNode = Noodl.defineReactNode({
@@ -35,6 +37,6 @@ Noodl.defineModule({
     nodes:[
     ],
     setup() {
-    	//this is called once on startup
+    	console.log("noodl-semantic-ui-react-module loaded");
     }
 });
