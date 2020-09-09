@@ -1,0 +1,10 @@
+{
+  "main":"index.js",
+  "dependencies":[],
+  "browser": {
+    "head": [
+      "<link async rel=\"stylesheet\" href=\"//cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css\" />"
+
+    ]
+  }
+}

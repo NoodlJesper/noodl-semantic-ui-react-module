@@ -1,11 +1,18 @@
 {
-    "name": "My react lib templates",
+    "name": "Semantic Ui dev",
     "components": [
         {
             "name": "/My tests",
             "id": "3936da2d-21f6-20ea-0911-2a4ae18c68bf",
             "graph": {
-                "connections": [],
+                "connections": [
+                    {
+                        "fromId": "6e7a93a1-5004-1a71-e934-4d2f21f00be1",
+                        "fromProperty": "onClick",
+                        "toId": "c3778caa-429a-38cc-524e-0ab6a8538802",
+                        "toProperty": "flip"
+                    }
+                ],
                 "roots": [
                     {
                         "id": "e8570140-710c-df7f-2314-faa1656a4f9c",
@@ -47,20 +54,17 @@
                                 },
                                 "ports": [],
                                 "children": []
-                            },
-                            {
-                                "id": "422d3638-270f-438f-edab-72158997d230",
-                                "type": "Custom React Component",
-                                "x": 20,
-                                "y": 92,
-                                "parameters": {
-                                    "backgroundColor": "#828282",
-                                    "style": "{\n}"
-                                },
-                                "ports": [],
-                                "children": []
                             }
                         ]
+                    },
+                    {
+                        "id": "c3778caa-429a-38cc-524e-0ab6a8538802",
+                        "type": "Switch",
+                        "x": 623,
+                        "y": 317,
+                        "parameters": {},
+                        "ports": [],
+                        "children": []
                     }
                 ]
             }
@@ -69,5 +73,7 @@
     "settings": {},
     "rootNodeId": "e8570140-710c-df7f-2314-faa1656a4f9c",
     "version": "1",
-    "metadata": {}
+    "metadata": {
+        "dbCollections": []
+    }
 }
