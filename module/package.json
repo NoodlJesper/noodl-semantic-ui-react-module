@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@noodl/noodl-sdk": "^0.4.0",
+    "react-semantic-ui-range": "^0.7.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^1.2.1"
   },
@@ -23,11 +24,13 @@
     "clean-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^2.0.2",
+    "file-loader": "^6.1.0",
+    "fs-extra": "^9.0.1",
     "react": "^16.7.0",
     "style-loader": "^0.23.1",
     "styled-components": "^4.2.0",
+    "url-loader": "^4.1.0",
     "webpack": "^4.28.1",
-    "webpack-cli": "^3.1.2",
-    "fs-extra": "^9.0.1"
+    "webpack-cli": "^3.1.2"
   }
 }

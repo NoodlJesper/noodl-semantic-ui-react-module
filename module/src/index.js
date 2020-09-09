@@ -1,8 +1,20 @@
 const Noodl = require('@noodl/noodl-sdk');
 import { Button, Dropdown } from 'semantic-ui-react'
+import { Slider } from "react-semantic-ui-range";
+import 'semantic-ui-css/semantic.min.css';
+//import { useState } from "react";
+//import '../node_modules/semantic-ui-css/components/menu.min.css';
+//import '../node_modules/semantic-ui-css/components/dropdown.min.css';
+//import '../node_modules/semantic-ui-css/components/item.min.css';
+//import '../node_modules/semantic-ui-css/components/icon.min.css';
 
 function ButtonComponent(props) {	
-	return <Button onClick={props.onClick}>{props.label}</Button>
+	return <Button
+				onClick={props.onClick}
+				color="teal"
+				fluid>
+					{props.label}
+				</Button>
 }
 const ButtonNode = Noodl.defineReactNode({
 	name: 'Button | Semantic UI',
@@ -20,15 +32,15 @@ const ButtonNode = Noodl.defineReactNode({
 
 
 const options = [
-  { key: 'angular', text: 'Angular', value: 'angular' },
-  { key: 'css', text: 'CSS', value: 'css' },
-  { key: 'design', text: 'Graphic Design', value: 'design' }
+  { key: 'e', text: 'Example', value: 'example' },
+  { key: 'd', text: 'Dropdown', value: 'dropdown' },
+  { key: 'i', text: 'Items', value: 'items' }
 ]
 
 function SelectionComponent(props) {
 
 	const handleOnChange = (e, data) => {
-		props.onValueChange(data.value);
+		if(props.onValueChange) props.onValueChange(data.value);
 	 }
 
 	return <Dropdown
@@ -61,10 +73,48 @@ const SelectionNode = Noodl.defineReactNode({
 })
 
 
+function RangeComponent(props) {	
+
+	const settings = {
+		start: [props.min,props.max],
+		min: props.min,
+		max: props.max,
+		step: 1,
+		onChange: value => {
+			props.onLowValueChange(value[0]);
+			props.onHighValueChange(value[1]);
+		}
+	};
+
+	return <Slider
+				multiple
+				color="teal"
+				settings={settings} />
+}
+
+
+const RangeNode = Noodl.defineReactNode({
+	name: 'Range | Semantic UI',
+	category: 'Semantic UI',
+	getReactComponent() {
+		return RangeComponent;
+	},
+	inputProps: {
+		min: {type: "number",default: 0},
+		max: {type: "number",default: 100}
+	},
+	outputProps: {
+		onLowValueChange: {type: 'number', displayName: 'Low value'},
+		onHighValueChange: {type: 'number', displayName: 'High value'}
+	}
+})
+
+
 Noodl.defineModule({
     reactNodes: [
 		ButtonNode,
-    	SelectionNode
+		SelectionNode,
+		RangeNode
     ],
     nodes:[
     ],

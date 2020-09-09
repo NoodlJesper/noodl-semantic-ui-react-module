@@ -7,10 +7,28 @@
             "graph": {
                 "connections": [
                     {
+                        "fromId": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
+                        "fromProperty": "onLowValueChange",
+                        "toId": "cb0f2b73-450d-43d8-0a03-1640dcce1422",
+                        "toProperty": "value"
+                    },
+                    {
+                        "fromId": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
+                        "fromProperty": "onHighValueChange",
+                        "toId": "cb0f2b73-450d-43d8-0a03-1640dcce1422",
+                        "toProperty": "value"
+                    },
+                    {
                         "fromId": "4a36203d-c44b-ba66-8712-63ea14bfaae1",
                         "fromProperty": "items",
                         "toId": "f2f895a6-e22f-2736-0375-f92c22cbf2ab",
                         "toProperty": "items"
+                    },
+                    {
+                        "fromId": "a1c20e36-963d-b9d4-100f-8139f74d2132",
+                        "fromProperty": "onClick",
+                        "toId": "6d29d09a-1cdb-f66c-6b47-cbe5f29da15b",
+                        "toProperty": "flip"
                     }
                 ],
                 "roots": [
@@ -62,6 +80,15 @@
                                 },
                                 "ports": [],
                                 "children": []
+                            },
+                            {
+                                "id": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
+                                "type": "Range | Semantic UI",
+                                "x": 384.8292914305887,
+                                "y": 485.1805988668258,
+                                "parameters": {},
+                                "ports": [],
+                                "children": []
                             }
                         ]
                     },
@@ -78,22 +105,20 @@
                         "children": []
                     },
                     {
-                        "id": "88b5da46-11b1-2a43-cb50-dcb462665e78",
-                        "type": "Switch",
-                        "x": 498,
-                        "y": 598.5,
+                        "id": "cb0f2b73-450d-43d8-0a03-1640dcce1422",
+                        "type": "Number",
+                        "x": 658.0055885270485,
+                        "y": 460.61837829317824,
                         "parameters": {},
                         "ports": [],
                         "children": []
                     },
                     {
-                        "id": "ce65dd1b-fa3b-5dd8-feeb-ca72a8430c57",
-                        "type": "Javascript2",
-                        "x": 480,
-                        "y": 757.5,
-                        "parameters": {
-                            "code": "script({\n\t// The input ports of the Javascript node, name of input and type\n\tinputs:{\n\t    logValue: \"*\"\n\t},\n\t\n\t// The output ports of the Javascript node, name of output and type\n\toutputs:{\n\t    // ExampleOutput:'string',\n\t},\n\t\n\t// Declare signal handle functions here, each function will be \n\t// exposed as a signal input to this node.\n\tsignals:{\n\t\t// mySignal:function() {   }\n\t},\n\t\n\t// These functions will be called when the correspinding input\n\t// is changed and the new value is provided\n\tchanged:{\n\t\tlogValue:function(value) {\n\t\t    console.log(value);\n\t\t}\n\t},\n\t\n\t// Here you can declare any function that will then be available\n\t// in this. So you can acces the function below with this.aFunction()\n\tmethods:{\n\t\t// aFunction:function(value) { }\n\t}\n})\n"
-                        },
+                        "id": "6d29d09a-1cdb-f66c-6b47-cbe5f29da15b",
+                        "type": "Switch",
+                        "x": 678.3470056658712,
+                        "y": 351.79179660047726,
+                        "parameters": {},
                         "ports": [],
                         "children": []
                     }
