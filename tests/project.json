@@ -7,10 +7,10 @@
             "graph": {
                 "connections": [
                     {
-                        "fromId": "6e7a93a1-5004-1a71-e934-4d2f21f00be1",
-                        "fromProperty": "onClick",
-                        "toId": "c3778caa-429a-38cc-524e-0ab6a8538802",
-                        "toProperty": "flip"
+                        "fromId": "4a36203d-c44b-ba66-8712-63ea14bfaae1",
+                        "fromProperty": "items",
+                        "toId": "f2f895a6-e22f-2736-0375-f92c22cbf2ab",
+                        "toProperty": "items"
                     }
                 ],
                 "roots": [
@@ -40,17 +40,25 @@
                         "ports": [],
                         "children": [
                             {
-                                "id": "6e7a93a1-5004-1a71-e934-4d2f21f00be1",
-                                "type": "Custom React Component",
+                                "id": "a1c20e36-963d-b9d4-100f-8139f74d2132",
+                                "type": "Button | Semantic UI",
                                 "x": 20,
                                 "y": 46,
                                 "parameters": {
-                                    "backgroundColor": "#828282",
-                                    "style": "{\n}",
-                                    "marginBottom": {
-                                        "value": 50,
-                                        "unit": "px"
-                                    }
+                                    "label": "My button"
+                                },
+                                "ports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "f2f895a6-e22f-2736-0375-f92c22cbf2ab",
+                                "type": "Selector | Semantic UI",
+                                "x": 20,
+                                "y": 92,
+                                "parameters": {
+                                    "multiple": true,
+                                    "search": true,
+                                    "clearable": true
                                 },
                                 "ports": [],
                                 "children": []
@@ -58,11 +66,34 @@
                         ]
                     },
                     {
-                        "id": "c3778caa-429a-38cc-524e-0ab6a8538802",
+                        "id": "4a36203d-c44b-ba66-8712-63ea14bfaae1",
+                        "type": "Javascript2",
+                        "label": "Array proper",
+                        "x": 144,
+                        "y": 356.5,
+                        "parameters": {
+                            "code": "script({\n\t// The input ports of the Javascript node, name of input and type\n\tinputs:{\n\t    // ExampleInput:'number',\n\t    // Available types are 'number', 'string', 'boolean', 'color'\n\t    //myNumber:'number',\n\t},\n\t\n\t// The output ports of the Javascript node, name of output and type\n\toutputs:{\n\t    items: \"array\"\n\t},\n\t\n\t// Declare signal handle functions here, each function will be \n\t// exposed as a signal input to this node.\n\tsignals:{\n\t\t// mySignal:function() {   }\n\t},\n\t\n\t// These functions will be called when the correspinding input\n\t// is changed and the new value is provided\n\tchanged:{\n\t\t// myNumber:function(value) { }\n\t},\n\t\n\t// Here you can declare any function that will then be available\n\t// in this. So you can acces the function below with this.aFunction()\n\tmethods:{\n\t\t// aFunction:function(value) { }\n\t},\n\tsetup: function(){\n\t    this.setOutputs({\n\t        items: [\n\t            { key: 'angular', text: 'Angular', value: 'angular' },\n                { key: 'css', text: 'CSS', value: 'css' },\n                { key: 'design', text: 'Graphic Design', value: 'design' }\n            ]\n\t    });\n\t}\n})\n"
+                        },
+                        "ports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "88b5da46-11b1-2a43-cb50-dcb462665e78",
                         "type": "Switch",
-                        "x": 623,
-                        "y": 317,
+                        "x": 498,
+                        "y": 598.5,
                         "parameters": {},
+                        "ports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "ce65dd1b-fa3b-5dd8-feeb-ca72a8430c57",
+                        "type": "Javascript2",
+                        "x": 480,
+                        "y": 757.5,
+                        "parameters": {
+                            "code": "script({\n\t// The input ports of the Javascript node, name of input and type\n\tinputs:{\n\t    logValue: \"*\"\n\t},\n\t\n\t// The output ports of the Javascript node, name of output and type\n\toutputs:{\n\t    // ExampleOutput:'string',\n\t},\n\t\n\t// Declare signal handle functions here, each function will be \n\t// exposed as a signal input to this node.\n\tsignals:{\n\t\t// mySignal:function() {   }\n\t},\n\t\n\t// These functions will be called when the correspinding input\n\t// is changed and the new value is provided\n\tchanged:{\n\t\tlogValue:function(value) {\n\t\t    console.log(value);\n\t\t}\n\t},\n\t\n\t// Here you can declare any function that will then be available\n\t// in this. So you can acces the function below with this.aFunction()\n\tmethods:{\n\t\t// aFunction:function(value) { }\n\t}\n})\n"
+                        },
                         "ports": [],
                         "children": []
                     }

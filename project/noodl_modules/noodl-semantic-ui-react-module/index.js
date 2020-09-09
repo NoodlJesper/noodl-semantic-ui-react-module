@@ -48507,37 +48507,23 @@ var Noodl = __webpack_require__(/*! @noodl/noodl-sdk */ "./node_modules/@noodl/n
 
 
 
-function MyCustomReactComponent(props) {
-  var style = {
-    color: props.textColor,
-    backgroundColor: props.backgroundColor,
-    borderRadius: '10px',
-    padding: '20px',
-    marginBottom: props.marginBottom
-  };
+function ButtonComponent(props) {
   return /*#__PURE__*/React.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_0__["Button"], {
     onClick: props.onClick
-  }, "Click Here");
+  }, props.label);
 }
 
-var MyCustomReactComponentNode = Noodl.defineReactNode({
-  name: 'Custom React Component',
-  category: 'Tutorial',
+var ButtonNode = Noodl.defineReactNode({
+  name: 'Button | Semantic UI',
+  category: 'Semantic UI',
   getReactComponent: function getReactComponent() {
-    return MyCustomReactComponent;
+    return ButtonComponent;
   },
   inputProps: {
-    backgroundColor: {
-      type: 'color',
-      "default": 'white'
-    },
-    marginBottom: {
-      type: {
-        name: 'number',
-        units: ['px'],
-        defaultUnit: 'px'
-      },
-      "default": 10
+    label: {
+      type: 'string',
+      "default": 'Button',
+      displayName: 'Label'
     }
   },
   outputProps: {
@@ -48547,8 +48533,74 @@ var MyCustomReactComponentNode = Noodl.defineReactNode({
     }
   }
 });
+var options = [{
+  key: 'angular',
+  text: 'Angular',
+  value: 'angular'
+}, {
+  key: 'css',
+  text: 'CSS',
+  value: 'css'
+}, {
+  key: 'design',
+  text: 'Graphic Design',
+  value: 'design'
+}];
+
+function SelectionComponent(props) {
+  var handleOnChange = function handleOnChange(e, data) {
+    props.onValueChange(data.value);
+  };
+
+  return /*#__PURE__*/React.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_0__["Dropdown"], {
+    placeholder: props.placeholder,
+    fluid: true,
+    clearable: props.clearable,
+    multiple: props.multiple,
+    search: props.search,
+    selection: true,
+    onChange: handleOnChange,
+    options: props.items
+  });
+}
+
+var SelectionNode = Noodl.defineReactNode({
+  name: 'Selector | Semantic UI',
+  category: 'Semantic UI',
+  getReactComponent: function getReactComponent() {
+    return SelectionComponent;
+  },
+  inputProps: {
+    items: {
+      type: "array",
+      "default": options
+    },
+    multiple: {
+      type: "boolean",
+      "default": false
+    },
+    search: {
+      type: "boolean",
+      "default": false
+    },
+    clearable: {
+      type: "boolean",
+      "default": false
+    },
+    placeholder: {
+      type: "string",
+      "default": "Select"
+    }
+  },
+  outputProps: {
+    onValueChange: {
+      type: 'array',
+      displayName: 'Values'
+    }
+  }
+});
 Noodl.defineModule({
-  reactNodes: [MyCustomReactComponentNode],
+  reactNodes: [ButtonNode, SelectionNode],
   nodes: [],
   setup: function setup() {
     console.log("noodl-semantic-ui-react-module loaded");

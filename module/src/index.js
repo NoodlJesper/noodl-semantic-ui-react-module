@@ -1,28 +1,17 @@
 const Noodl = require('@noodl/noodl-sdk');
-import { Button } from 'semantic-ui-react'
+import { Button, Dropdown } from 'semantic-ui-react'
 
-
-function MyCustomReactComponent(props) {
-	const style = {
-		color: props.textColor,
-		backgroundColor: props.backgroundColor,
-		borderRadius: '10px',
-		padding: '20px',
-		marginBottom: props.marginBottom
-	};
-
-	return <Button onClick={props.onClick}>Click Here</Button>
+function ButtonComponent(props) {	
+	return <Button onClick={props.onClick}>{props.label}</Button>
 }
-
-const MyCustomReactComponentNode = Noodl.defineReactNode({
-	name: 'Custom React Component',
-	category: 'Tutorial',
+const ButtonNode = Noodl.defineReactNode({
+	name: 'Button | Semantic UI',
+	category: 'Semantic UI',
 	getReactComponent() {
-		return MyCustomReactComponent;
+		return ButtonComponent;
 	},
 	inputProps: {
-		backgroundColor: {type: 'color', default: 'white'},
-		marginBottom: {type: {name: 'number', units: ['px'], defaultUnit: 'px'}, default: 10}
+		label: {type: 'string', default: 'Button', displayName: 'Label'},
 	},
 	outputProps: {
 		onClick: {type: 'signal', displayName: 'Click'}
@@ -30,9 +19,52 @@ const MyCustomReactComponentNode = Noodl.defineReactNode({
 })
 
 
+const options = [
+  { key: 'angular', text: 'Angular', value: 'angular' },
+  { key: 'css', text: 'CSS', value: 'css' },
+  { key: 'design', text: 'Graphic Design', value: 'design' }
+]
+
+function SelectionComponent(props) {
+
+	const handleOnChange = (e, data) => {
+		props.onValueChange(data.value);
+	 }
+
+	return <Dropdown
+				placeholder={props.placeholder}
+				fluid
+				clearable={props.clearable}
+				multiple={props.multiple}
+				search={props.search}
+				selection
+				onChange={handleOnChange}
+				options={props.items} />
+}
+
+const SelectionNode = Noodl.defineReactNode({
+	name: 'Selector | Semantic UI',
+	category: 'Semantic UI',
+	getReactComponent() {
+		return SelectionComponent;
+	},
+	inputProps: {
+		items: {type: "array", default: options},
+		multiple: {type: "boolean", default: false},
+		search: {type: "boolean", default: false},
+		clearable: {type: "boolean", default: false},
+		placeholder: {type: "string", default: "Select"}
+	},
+	outputProps: {
+		onValueChange: {type: 'array', displayName: 'Values'}
+	}
+})
+
+
 Noodl.defineModule({
     reactNodes: [
-    	MyCustomReactComponentNode
+		ButtonNode,
+    	SelectionNode
     ],
     nodes:[
     ],
