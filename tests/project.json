@@ -58,21 +58,98 @@
                         "ports": [],
                         "children": [
                             {
-                                "id": "a1c20e36-963d-b9d4-100f-8139f74d2132",
-                                "type": "Button | Semantic UI",
+                                "id": "33d01b03-5ef5-d49a-95c7-2d9cdf0f39a3",
+                                "type": "Breadcrumb | Semantic UI",
                                 "x": 20,
                                 "y": 46,
                                 "parameters": {
-                                    "label": "My button"
+                                    "icon": "right angle",
+                                    "size": "big"
                                 },
                                 "ports": [],
                                 "children": []
                             },
                             {
+                                "id": "cc3dbb4d-a730-b38d-42b3-b0f464009b4e",
+                                "type": "Group",
+                                "x": 20,
+                                "y": 46,
+                                "parameters": {
+                                    "sizeMode": "contentSize",
+                                    "flexDirection": "row",
+                                    "alignX": "right"
+                                },
+                                "ports": [],
+                                "children": [
+                                    {
+                                        "id": "10eb53cc-4251-ec3a-7041-cce5adb542c8",
+                                        "type": "Group",
+                                        "x": 20,
+                                        "y": 46,
+                                        "parameters": {
+                                            "sizeMode": "contentSize",
+                                            "marginRight": {
+                                                "value": 8,
+                                                "unit": "px"
+                                            }
+                                        },
+                                        "ports": [],
+                                        "children": [
+                                            {
+                                                "id": "c7807a6e-d8a1-14f3-740a-26f478eb7245",
+                                                "type": "Button | Semantic UI",
+                                                "x": 20,
+                                                "y": 46,
+                                                "parameters": {
+                                                    "icon": "user",
+                                                    "label": "User",
+                                                    "compact": false,
+                                                    "circular": true,
+                                                    "color": "black",
+                                                    "size": "big",
+                                                    "basic": false,
+                                                    "inverted": false
+                                                },
+                                                "ports": [],
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "f090f542-8e28-694e-f588-4e2a9fd7fa27",
+                                        "type": "Group",
+                                        "x": 20,
+                                        "y": 138,
+                                        "parameters": {
+                                            "sizeMode": "contentSize"
+                                        },
+                                        "ports": [],
+                                        "children": [
+                                            {
+                                                "id": "a1c20e36-963d-b9d4-100f-8139f74d2132",
+                                                "type": "Button | Semantic UI",
+                                                "x": 20,
+                                                "y": 46,
+                                                "parameters": {
+                                                    "icon": "clipboard",
+                                                    "label": "Projects",
+                                                    "compact": false,
+                                                    "circular": true,
+                                                    "color": "black",
+                                                    "size": "big"
+                                                },
+                                                "ports": [],
+                                                "children": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
                                 "id": "f2f895a6-e22f-2736-0375-f92c22cbf2ab",
                                 "type": "Selector | Semantic UI",
                                 "x": 20,
-                                "y": 92,
+                                "y": 128,
                                 "parameters": {
                                     "multiple": true,
                                     "search": true,
@@ -84,8 +161,8 @@
                             {
                                 "id": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
                                 "type": "Range | Semantic UI",
-                                "x": 384.8292914305887,
-                                "y": 485.1805988668258,
+                                "x": 20,
+                                "y": 210,
                                 "parameters": {},
                                 "ports": [],
                                 "children": []
@@ -107,8 +184,8 @@
                     {
                         "id": "cb0f2b73-450d-43d8-0a03-1640dcce1422",
                         "type": "Number",
-                        "x": 658.0055885270485,
-                        "y": 460.61837829317824,
+                        "x": 663.0909428117542,
+                        "y": 553.171826274821,
                         "parameters": {},
                         "ports": [],
                         "children": []
@@ -116,8 +193,8 @@
                     {
                         "id": "6d29d09a-1cdb-f66c-6b47-cbe5f29da15b",
                         "type": "Switch",
-                        "x": 678.3470056658712,
-                        "y": 351.79179660047726,
+                        "x": 659.0226593839897,
+                        "y": 368.0649303115353,
                         "parameters": {},
                         "ports": [],
                         "children": []
