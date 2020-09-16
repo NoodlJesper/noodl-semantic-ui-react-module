@@ -1,6 +1,7 @@
 const Noodl = require('@noodl/noodl-sdk');
 import { Button, Dropdown, Icon, Breadcrumb } from 'semantic-ui-react'
 import { Slider } from "react-semantic-ui-range";
+import {useEffect,useState} from "react";
 //import 'semantic-ui-css/semantic.min.css';
 //import { useState } from "react";
 //import '../node_modules/semantic-ui-css/components/menu.min.css';
@@ -118,14 +119,27 @@ const SelectionExampleOptions = [
 ]
 
 function SelectionComponent(props) {
-	
-	const handleOnChange = (e, data) => {
-		if(props.onValueChange) props.onValueChange(data.value);
-		
-		if(data.value[0] === undefined) {
-			if(props.cleared) props.cleared();
-		}
-	 }
+
+	let val = props.multiple && props.value ? props.value.split(",") : [];
+	val = !props.multiple && props.value ? props.value : val;
+
+	const [value, setValue] = useState(val);
+	props.onValueChange && props.onValueChange(value);
+
+
+	useEffect(() => {
+		val = props.multiple && props.value ? props.value.split(",") : [];
+		val = !props.multiple && props.value ? props.value : val;
+		setValue(val);
+		props.onValueChange && props.onValueChange(value);
+	}, [props.value]);
+
+	const handleChange = (e, { value }) => {
+		setValue(value);
+		props.onValueChange && props.onValueChange(value);
+		!value[0] && props.cleared && props.cleared();
+	};
+
 
 	return <Dropdown
 				placeholder={props.placeholder}
@@ -134,8 +148,10 @@ function SelectionComponent(props) {
 				multiple={props.multiple}
 				search={props.search}
 				selection
-				onChange={handleOnChange}
-				options={props.items} />
+				onChange={handleChange}
+				options={props.items}
+				value={value}
+				 />
 }
 
 const SelectionNode = Noodl.defineReactNode({
@@ -149,7 +165,8 @@ const SelectionNode = Noodl.defineReactNode({
 		multiple: {type: "boolean", default: false},
 		search: {type: "boolean", default: false},
 		clearable: {type: "boolean", default: false},
-		placeholder: {type: "string", default: "Select"}
+		placeholder: {type: "string", default: "Select"},
+		value: {type: "string"}
 	},
 	outputProps: {
 		onValueChange: {type: 'array', displayName: 'Values'},
