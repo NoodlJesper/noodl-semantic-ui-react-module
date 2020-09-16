@@ -120,22 +120,40 @@ const SelectionExampleOptions = [
 
 function SelectionComponent(props) {
 
-	let val = props.multiple && props.value ? props.value.split(",") : [];
-	val = !props.multiple && props.value ? props.value : val;
+	let val;
+	if(props.multiple) {
+		val = [];
+		val = props.value && props.value.split(",");
+	} else {
+		val = "";
+		val = props.value && props.value;
+	}
 
 	const [value, setValue] = useState(val);
 	props.onValueChange && props.onValueChange(value);
 
 
 	useEffect(() => {
-		val = props.multiple && props.value ? props.value.split(",") : [];
-		val = !props.multiple && props.value ? props.value : val;
+		
+		if(props.multiple) {
+			val = [];
+			val = props.value && props.value.split(",");
+		} else {
+			val = "";
+			val = props.value && props.value;
+		}
+		
 		setValue(val);
 		props.onValueChange && props.onValueChange(value);
 	}, [props.value]);
 
 	const handleChange = (e, { value }) => {
-		setValue(value);
+		if(props.multiple) {
+			val = typeof value === "object" ? value : [];
+		} else {
+			val = typeof value === "string" ? value : "";
+		}
+		setValue(val);
 		props.onValueChange && props.onValueChange(value);
 		!value[0] && props.cleared && props.cleared();
 	};
@@ -143,11 +161,11 @@ function SelectionComponent(props) {
 
 	return <Dropdown
 				placeholder={props.placeholder}
-				fluid
+				//fluid
 				clearable={props.clearable}
 				multiple={props.multiple}
 				search={props.search}
-				selection
+				selection={props.selection}
 				onChange={handleChange}
 				options={props.items}
 				value={value}
@@ -165,8 +183,9 @@ const SelectionNode = Noodl.defineReactNode({
 		multiple: {type: "boolean", default: false},
 		search: {type: "boolean", default: false},
 		clearable: {type: "boolean", default: false},
+		selection: {type: "boolean", default: false},
 		placeholder: {type: "string", default: "Select"},
-		value: {type: "string"}
+		value: {type: "string", default: ""}
 	},
 	outputProps: {
 		onValueChange: {type: 'array', displayName: 'Values'},

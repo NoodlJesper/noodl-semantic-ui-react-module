@@ -153,10 +153,10 @@
                                 "x": 20,
                                 "y": 372,
                                 "parameters": {
-                                    "clearable": true,
-                                    "search": true,
-                                    "value": "",
-                                    "multiple": true
+                                    "clearable": false,
+                                    "selection": false,
+                                    "search": false,
+                                    "multiple": false
                                 },
                                 "ports": [],
                                 "children": []
