@@ -29,6 +29,18 @@
                         "fromProperty": "onClick",
                         "toId": "6d29d09a-1cdb-f66c-6b47-cbe5f29da15b",
                         "toProperty": "flip"
+                    },
+                    {
+                        "fromId": "8e2b60b4-fc6b-a844-25f1-1754a18a1de2",
+                        "fromProperty": "items",
+                        "toId": "33d01b03-5ef5-d49a-95c7-2d9cdf0f39a3",
+                        "toProperty": "items"
+                    },
+                    {
+                        "fromId": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
+                        "fromProperty": "onHighValueChange",
+                        "toId": "0ec220be-f8c2-a833-ded5-0b1aaeca1b4e",
+                        "toProperty": "value"
                     }
                 ],
                 "roots": [
@@ -149,7 +161,7 @@
                                 "id": "f2f895a6-e22f-2736-0375-f92c22cbf2ab",
                                 "type": "Selector | Semantic UI",
                                 "x": 20,
-                                "y": 128,
+                                "y": 408,
                                 "parameters": {
                                     "multiple": true,
                                     "search": true,
@@ -162,8 +174,11 @@
                                 "id": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
                                 "type": "Range | Semantic UI",
                                 "x": 20,
-                                "y": 210,
-                                "parameters": {},
+                                "y": 490,
+                                "parameters": {
+                                    "min": 4.6,
+                                    "max": 8.9
+                                },
                                 "ports": [],
                                 "children": []
                             }
@@ -173,8 +188,8 @@
                         "id": "4a36203d-c44b-ba66-8712-63ea14bfaae1",
                         "type": "Javascript2",
                         "label": "Array proper",
-                        "x": 144,
-                        "y": 356.5,
+                        "x": 72,
+                        "y": 691.5,
                         "parameters": {
                             "code": "script({\n\t// The input ports of the Javascript node, name of input and type\n\tinputs:{\n\t    // ExampleInput:'number',\n\t    // Available types are 'number', 'string', 'boolean', 'color'\n\t    //myNumber:'number',\n\t},\n\t\n\t// The output ports of the Javascript node, name of output and type\n\toutputs:{\n\t    items: \"array\"\n\t},\n\t\n\t// Declare signal handle functions here, each function will be \n\t// exposed as a signal input to this node.\n\tsignals:{\n\t\t// mySignal:function() {   }\n\t},\n\t\n\t// These functions will be called when the correspinding input\n\t// is changed and the new value is provided\n\tchanged:{\n\t\t// myNumber:function(value) { }\n\t},\n\t\n\t// Here you can declare any function that will then be available\n\t// in this. So you can acces the function below with this.aFunction()\n\tmethods:{\n\t\t// aFunction:function(value) { }\n\t},\n\tsetup: function(){\n\t    this.setOutputs({\n\t        items: [\n\t            { key: 'angular', text: 'Angular', value: 'angular' },\n                { key: 'css', text: 'CSS', value: 'css' },\n                { key: 'design', text: 'Graphic Design', value: 'design' }\n            ]\n\t    });\n\t}\n})\n"
                         },
@@ -195,6 +210,27 @@
                         "type": "Switch",
                         "x": 659.0226593839897,
                         "y": 368.0649303115353,
+                        "parameters": {},
+                        "ports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "8e2b60b4-fc6b-a844-25f1-1754a18a1de2",
+                        "type": "Javascript2",
+                        "label": "Array proper",
+                        "x": 50.27840054893602,
+                        "y": 326.55918914658906,
+                        "parameters": {
+                            "code": "script({\n\toutputs:{\n\t    items: \"array\"\n\t},\n\tsetup: function(){\n\t    this.setOutputs({\n\t        items: [\n\t            { key: 'home', content: 'Root', link: true, href:\"#\" },\n            \t{ key: 'category', content: 'Category', link: true, href:\"#/category/indoor\" },\n            \t{ key: 'family', content: 'Family', link: true, href:\"#/family/lighting\" },\n            \t{ key: 'group', content: 'Group', link: true, href:\"#/group/lamps\" },\n            \t{ key: 'product', content: 'Nice lamp', active: true }\n            ]\n\t    });\n\t}\n})\n"
+                        },
+                        "ports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "0ec220be-f8c2-a833-ded5-0b1aaeca1b4e",
+                        "type": "Number",
+                        "x": 748.9564202772107,
+                        "y": 806.799756980796,
                         "parameters": {},
                         "ports": [],
                         "children": []

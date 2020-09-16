@@ -118,9 +118,13 @@ const SelectionExampleOptions = [
 ]
 
 function SelectionComponent(props) {
-
+	
 	const handleOnChange = (e, data) => {
 		if(props.onValueChange) props.onValueChange(data.value);
+		
+		if(data.value[0] === undefined) {
+			if(props.cleared) props.cleared();
+		}
 	 }
 
 	return <Dropdown
@@ -148,7 +152,8 @@ const SelectionNode = Noodl.defineReactNode({
 		placeholder: {type: "string", default: "Select"}
 	},
 	outputProps: {
-		onValueChange: {type: 'array', displayName: 'Values'}
+		onValueChange: {type: 'array', displayName: 'Values'},
+		cleared: {type: 'signal', displayName: 'Cleared'},
 	}
 })
 
@@ -156,19 +161,22 @@ const SelectionNode = Noodl.defineReactNode({
 function RangeComponent(props) {	
 
 	const settings = {
-		start: [props.min,props.max],
-		min: props.min,
-		max: props.max,
+		start: [props.min*100,props.max*100],
+		min: props.min*100,
+		max: props.max*100,
 		step: 1,
 		onChange: value => {
-			props.onLowValueChange(value[0]);
-			props.onHighValueChange(value[1]);
+			props.onLowValueChange(value[0]/100);
+			props.onHighValueChange(value[1]/100);
 		}
 	};
+
+	let disabled = props.min === props.max;
 
 	return <Slider
 				multiple
 				color="teal"
+				disabled={disabled}
 				settings={settings} />
 }
 
