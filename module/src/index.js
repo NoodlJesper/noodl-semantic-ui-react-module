@@ -1,5 +1,5 @@
 const Noodl = require('@noodl/noodl-sdk');
-import { Button, Dropdown, Icon, Breadcrumb } from 'semantic-ui-react'
+import { Button, Dropdown, Icon, Breadcrumb, Search } from 'semantic-ui-react'
 import { Slider } from "react-semantic-ui-range";
 import {useEffect,useState} from "react";
 //import 'semantic-ui-css/semantic.min.css';
@@ -120,6 +120,25 @@ const SelectionExampleOptions = [
 
 function SelectionComponent(props) {
 
+	let iconProps = {};
+	let buttonProps = {};
+
+	if(props.icon && props.icon !== ""){
+		iconProps.icon = props.icon;
+		iconProps.className = "icon";
+	} else {
+		iconProps = {};
+	}
+
+	if(props.button){
+		buttonProps.button = true;
+		if(props.icon || props.icon !== "") buttonProps.labeled = true;
+		if(iconProps.className !== "icon") iconProps.className = "icon";
+	} else {
+		buttonProps = {};
+	}
+
+
 	let val;
 	if(props.multiple) {
 		val = [];
@@ -147,7 +166,9 @@ function SelectionComponent(props) {
 		props.onValueChange && props.onValueChange(value);
 	}, [props.value]);
 
+
 	const handleChange = (e, { value }) => {
+		
 		if(props.multiple) {
 			val = typeof value === "object" ? value : [];
 		} else {
@@ -155,20 +176,47 @@ function SelectionComponent(props) {
 		}
 		setValue(val);
 		props.onValueChange && props.onValueChange(value);
+		props.valueChanged && props.valueChanged();
 		!value[0] && props.cleared && props.cleared();
+	};
+
+	const handleSearchChange = (e, { searchQuery }) => {
+		props.searchTerm && props.searchTerm(searchQuery);
 	};
 
 
 	return <Dropdown
-				placeholder={props.placeholder}
-				//fluid
-				clearable={props.clearable}
-				multiple={props.multiple}
-				search={props.search}
-				selection={props.selection}
-				onChange={handleChange}
+	
 				options={props.items}
 				value={value}
+
+				onChange={handleChange}
+				onSearchChange={handleSearchChange}
+				
+				placeholder={props.placeholder}
+				//text='Select Language'
+				
+				multiple={props.multiple}
+				clearable={props.clearable}
+				search={props.search}
+				
+				fluid
+				scrolling
+				
+				floating={props.floating}
+				compact={props.compact}
+				
+				selection={props.selection}
+				
+				{...iconProps}
+				{...buttonProps}
+				
+				//pointing
+				loading={props.loading}
+				disabled={props.disabled}
+				//noResultsMessage='Try another search.'
+				//noResultsMessage={null}
+				wrapSelection={true}
 				 />
 }
 
@@ -185,11 +233,20 @@ const SelectionNode = Noodl.defineReactNode({
 		clearable: {type: "boolean", default: false},
 		selection: {type: "boolean", default: false},
 		placeholder: {type: "string", default: "Select"},
-		value: {type: "string", default: ""}
+		value: {type: "string", default: ""},
+		icon:  {type: "string", default: ""},
+		loading: {type: "boolean", default: false},
+		disabled: {type: "boolean", default: false},
+		compact: {type: "boolean", default: false},
+		floating: {type: "boolean", default: false},
+
+		button: {type: "boolean", default: false},
 	},
 	outputProps: {
 		onValueChange: {type: 'array', displayName: 'Values'},
-		cleared: {type: 'signal', displayName: 'Cleared'},
+		searchTerm: {type: 'string', displayName: 'Search'},
+		valueChanged: {type: 'signal', displayName: 'Changed',group:"Events"},
+		cleared: {type: 'signal', displayName: 'Cleared',group:"Events"}
 	}
 })
 
@@ -201,10 +258,7 @@ function RangeComponent(props) {
 		min: props.min*100,
 		max: props.max*100,
 		step: 1,
-		onChange: value => {
-			props.onLowValueChange(value[0]/100);
-			props.onHighValueChange(value[1]/100);
-		}
+		onChange: props.onChange
 	};
 
 	let disabled = props.min === props.max;
@@ -223,11 +277,19 @@ const RangeNode = Noodl.defineReactNode({
 	getReactComponent() {
 		return RangeComponent;
 	},
+	initialize() {
+		this.props.onChange = value => {
+			this.setOutputs({
+				onLowValueChange: value[0]/100,
+				onHighValueChange: value[1]/100
+			});
+		}
+	},
 	inputProps: {
 		min: {type: "number",default: 0},
 		max: {type: "number",default: 100}
 	},
-	outputProps: {
+	outputs: {
 		onLowValueChange: {type: 'number', displayName: 'Low value'},
 		onHighValueChange: {type: 'number', displayName: 'High value'}
 	}
@@ -241,23 +303,17 @@ const BreadcrumbExampleSections = [
 	{ key: 'product', content: 'Nice lamp', active: true }
 ];
 
-function BreadcrumbComponent(props) {	
-	let handleClick = (e) => console.log(e.target);
-	return <Breadcrumb
-
-				//onClick={handleClick}
-				icon={props.icon}
-				size={props.size}
-				sections={props.items}
-			/>
-}
-
-
 const BreadcrumbNode = Noodl.defineReactNode({
 	name: 'Breadcrumb | Semantic UI',
 	category: 'Semantic UI',
+	useInputAsLabel: "size",
 	getReactComponent() {
-		return BreadcrumbComponent;
+		return ({items, ...props}) => {	
+			return <Breadcrumb sections={items} {...props}/>
+		};
+	},
+	inputCss: {
+		backgroundColor: {type: "color"}
 	},
 	inputProps: {
 		items: {group: "Properties", type: "array", default: BreadcrumbExampleSections},

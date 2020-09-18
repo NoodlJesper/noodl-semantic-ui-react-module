@@ -15,13 +15,19 @@
                     {
                         "fromId": "8e2b60b4-fc6b-a844-25f1-1754a18a1de2",
                         "fromProperty": "items",
-                        "toId": "33d01b03-5ef5-d49a-95c7-2d9cdf0f39a3",
+                        "toId": "d36504ee-65d2-ecd5-1754-a68b9de940bd",
                         "toProperty": "items"
                     },
                     {
-                        "fromId": "f2f895a6-e22f-2736-0375-f92c22cbf2ab",
-                        "fromProperty": "onValueChange",
-                        "toId": "c1843168-a860-6a8c-1f0b-2af0526d9fca",
+                        "fromId": "4a36203d-c44b-ba66-8712-63ea14bfaae1",
+                        "fromProperty": "items",
+                        "toId": "7115d450-8046-b988-5e94-22973e1ba534",
+                        "toProperty": "items"
+                    },
+                    {
+                        "fromId": "4a36203d-c44b-ba66-8712-63ea14bfaae1",
+                        "fromProperty": "items",
+                        "toId": "2e0031f3-8bae-3be3-ecd1-0b04adc6740a",
                         "toProperty": "items"
                     }
                 ],
@@ -52,13 +58,12 @@
                         "ports": [],
                         "children": [
                             {
-                                "id": "33d01b03-5ef5-d49a-95c7-2d9cdf0f39a3",
+                                "id": "d36504ee-65d2-ecd5-1754-a68b9de940bd",
                                 "type": "Breadcrumb | Semantic UI",
                                 "x": 20,
                                 "y": 46,
                                 "parameters": {
-                                    "icon": "right angle",
-                                    "size": "big"
+                                    "icon": "arrow right"
                                 },
                                 "ports": [],
                                 "children": []
@@ -148,20 +153,6 @@
                                 ]
                             },
                             {
-                                "id": "f2f895a6-e22f-2736-0375-f92c22cbf2ab",
-                                "type": "Selector | Semantic UI",
-                                "x": 20,
-                                "y": 372,
-                                "parameters": {
-                                    "clearable": false,
-                                    "selection": false,
-                                    "search": false,
-                                    "multiple": false
-                                },
-                                "ports": [],
-                                "children": []
-                            },
-                            {
                                 "id": "d8fe66ae-0083-6dcd-a32f-3c52f0347f7e",
                                 "type": "Group",
                                 "x": 20,
@@ -192,6 +183,55 @@
                                         "children": []
                                     }
                                 ]
+                            },
+                            {
+                                "id": "7115d450-8046-b988-5e94-22973e1ba534",
+                                "type": "Selector | Semantic UI",
+                                "x": 20,
+                                "y": 464,
+                                "parameters": {
+                                    "size": "massive",
+                                    "button": true,
+                                    "compact": false,
+                                    "icon": "filter",
+                                    "floating": true,
+                                    "clearable": true,
+                                    "value": ""
+                                },
+                                "ports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "f2f895a6-e22f-2736-0375-f92c22cbf2ab",
+                                "type": "Selector | Semantic UI",
+                                "x": 20,
+                                "y": 546,
+                                "parameters": {
+                                    "clearable": true,
+                                    "selection": true,
+                                    "search": true,
+                                    "size": "massive",
+                                    "loading": false,
+                                    "disabled": false,
+                                    "floating": false,
+                                    "compact": false,
+                                    "multiple": true,
+                                    "icon": "search"
+                                },
+                                "ports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "2e0031f3-8bae-3be3-ecd1-0b04adc6740a",
+                                "type": "Selector | Semantic UI",
+                                "x": 20,
+                                "y": 628,
+                                "parameters": {
+                                    "floating": true,
+                                    "compact": false
+                                },
+                                "ports": [],
+                                "children": []
                             }
                         ]
                     },
@@ -199,8 +239,8 @@
                         "id": "4a36203d-c44b-ba66-8712-63ea14bfaae1",
                         "type": "Javascript2",
                         "label": "Array proper",
-                        "x": 131.1342866816045,
-                        "y": 637.1456613577479,
+                        "x": 69.1342866816045,
+                        "y": 784.1456613577479,
                         "parameters": {
                             "code": "script({\n\t// The input ports of the Javascript node, name of input and type\n\tinputs:{\n\t    // ExampleInput:'number',\n\t    // Available types are 'number', 'string', 'boolean', 'color'\n\t    //myNumber:'number',\n\t},\n\t\n\t// The output ports of the Javascript node, name of output and type\n\toutputs:{\n\t    items: \"array\"\n\t},\n\t\n\t// Declare signal handle functions here, each function will be \n\t// exposed as a signal input to this node.\n\tsignals:{\n\t\t// mySignal:function() {   }\n\t},\n\t\n\t// These functions will be called when the correspinding input\n\t// is changed and the new value is provided\n\tchanged:{\n\t\t// myNumber:function(value) { }\n\t},\n\t\n\t// Here you can declare any function that will then be available\n\t// in this. So you can acces the function below with this.aFunction()\n\tmethods:{\n\t\t// aFunction:function(value) { }\n\t},\n\tsetup: function(){\n\t    this.setOutputs({\n\t        items: [\n\t            { key: 'angular', text: 'Angular', value: 'angular' },\n                { key: 'css', text: 'CSS', value: 'css' },\n                { key: 'design', text: 'Graphic Design', value: 'design' }\n            ]\n\t    });\n\t}\n})\n"
                         },
@@ -211,20 +251,11 @@
                         "id": "8e2b60b4-fc6b-a844-25f1-1754a18a1de2",
                         "type": "Javascript2",
                         "label": "Array proper",
-                        "x": 50.27840054893602,
-                        "y": 326.55918914658906,
+                        "x": 152.27840054893602,
+                        "y": 324.55918914658906,
                         "parameters": {
                             "code": "script({\n\toutputs:{\n\t    items: \"array\"\n\t},\n\tsetup: function(){\n\t    this.setOutputs({\n\t        items: [\n\t            { key: 'home', content: 'Root', link: true, href:\"#\" },\n            \t{ key: 'category', content: 'Category', link: true, href:\"#/category/indoor\" },\n            \t{ key: 'family', content: 'Family', link: true, href:\"#/family/lighting\" },\n            \t{ key: 'group', content: 'Group', link: true, href:\"#/group/lamps\" },\n            \t{ key: 'product', content: 'Nice lamp', active: true }\n            ]\n\t    });\n\t}\n})\n"
                         },
-                        "ports": [],
-                        "children": []
-                    },
-                    {
-                        "id": "c1843168-a860-6a8c-1f0b-2af0526d9fca",
-                        "type": "Collection",
-                        "x": 615.7247371703152,
-                        "y": 650.6826171189568,
-                        "parameters": {},
                         "ports": [],
                         "children": []
                     }
