@@ -29,6 +29,48 @@
                         "fromProperty": "items",
                         "toId": "2e0031f3-8bae-3be3-ecd1-0b04adc6740a",
                         "toProperty": "items"
+                    },
+                    {
+                        "fromId": "f2f895a6-e22f-2736-0375-f92c22cbf2ab",
+                        "fromProperty": "searchTerm",
+                        "toId": "d6d7e4d6-2c63-0557-2c75-b9fcfca2156f",
+                        "toProperty": "value"
+                    },
+                    {
+                        "fromId": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
+                        "fromProperty": "onLowValueChange",
+                        "toId": "6d9420f5-f9ce-3527-55d3-60639dc662bc",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
+                        "fromProperty": "onHighValueChange",
+                        "toId": "4ac45014-bd57-0b42-12cb-6260688edeac",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "a42cd1a5-6014-a2dc-a534-d079b1f3c04c",
+                        "fromProperty": "savedValue",
+                        "toId": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
+                        "toProperty": "max"
+                    },
+                    {
+                        "fromId": "9d8d8c3f-4a59-bc37-d38f-04a924c973d9",
+                        "fromProperty": "savedValue",
+                        "toId": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
+                        "toProperty": "min"
+                    },
+                    {
+                        "fromId": "a1c20e36-963d-b9d4-100f-8139f74d2132",
+                        "fromProperty": "onClick",
+                        "toId": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
+                        "toProperty": "reset"
+                    },
+                    {
+                        "fromId": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
+                        "fromProperty": "onReset",
+                        "toId": "4efe8b1e-8271-37fb-dcac-427a496fef65",
+                        "toProperty": "value"
                     }
                 ],
                 "roots": [
@@ -56,6 +98,7 @@
                             }
                         },
                         "ports": [],
+                        "dynamicports": [],
                         "children": [
                             {
                                 "id": "d36504ee-65d2-ecd5-1754-a68b9de940bd",
@@ -66,6 +109,7 @@
                                     "icon": "arrow right"
                                 },
                                 "ports": [],
+                                "dynamicports": [],
                                 "children": []
                             },
                             {
@@ -87,6 +131,7 @@
                                     }
                                 },
                                 "ports": [],
+                                "dynamicports": [],
                                 "children": [
                                     {
                                         "id": "10eb53cc-4251-ec3a-7041-cce5adb542c8",
@@ -101,6 +146,7 @@
                                             }
                                         },
                                         "ports": [],
+                                        "dynamicports": [],
                                         "children": [
                                             {
                                                 "id": "c7807a6e-d8a1-14f3-740a-26f478eb7245",
@@ -118,6 +164,7 @@
                                                     "inverted": false
                                                 },
                                                 "ports": [],
+                                                "dynamicports": [],
                                                 "children": []
                                             }
                                         ]
@@ -131,6 +178,7 @@
                                             "sizeMode": "contentSize"
                                         },
                                         "ports": [],
+                                        "dynamicports": [],
                                         "children": [
                                             {
                                                 "id": "a1c20e36-963d-b9d4-100f-8139f74d2132",
@@ -146,6 +194,7 @@
                                                     "size": "big"
                                                 },
                                                 "ports": [],
+                                                "dynamicports": [],
                                                 "children": []
                                             }
                                         ]
@@ -156,7 +205,7 @@
                                 "id": "d8fe66ae-0083-6dcd-a32f-3c52f0347f7e",
                                 "type": "Group",
                                 "x": 20,
-                                "y": 490,
+                                "y": 408,
                                 "parameters": {
                                     "sizeMode": "contentHeight",
                                     "marginTop": {
@@ -169,18 +218,62 @@
                                     }
                                 },
                                 "ports": [],
+                                "dynamicports": [],
                                 "children": [
                                     {
                                         "id": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
                                         "type": "Range | Semantic UI",
-                                        "x": 416,
-                                        "y": 789,
+                                        "x": 20,
+                                        "y": 46,
+                                        "parameters": {},
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "8626efe5-4b5c-acb2-9f81-2d4ad363a903",
+                                        "type": "Group",
+                                        "x": 20,
+                                        "y": 148,
                                         "parameters": {
-                                            "min": 4.6,
-                                            "max": 8.9
+                                            "flexDirection": "row"
                                         },
                                         "ports": [],
-                                        "children": []
+                                        "dynamicports": [],
+                                        "children": [
+                                            {
+                                                "id": "6d9420f5-f9ce-3527-55d3-60639dc662bc",
+                                                "type": "Text",
+                                                "x": 426,
+                                                "y": 825,
+                                                "parameters": {
+                                                    "width": {
+                                                        "value": 50,
+                                                        "unit": "%"
+                                                    }
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            },
+                                            {
+                                                "id": "4ac45014-bd57-0b42-12cb-6260688edeac",
+                                                "type": "Text",
+                                                "x": 426,
+                                                "y": 907,
+                                                "parameters": {
+                                                    "width": {
+                                                        "value": 50,
+                                                        "unit": "%"
+                                                    },
+                                                    "alignX": "right",
+                                                    "textAlignX": "right"
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -199,6 +292,7 @@
                                     "value": ""
                                 },
                                 "ports": [],
+                                "dynamicports": [],
                                 "children": []
                             },
                             {
@@ -219,6 +313,7 @@
                                     "icon": "search"
                                 },
                                 "ports": [],
+                                "dynamicports": [],
                                 "children": []
                             },
                             {
@@ -231,6 +326,7 @@
                                     "compact": false
                                 },
                                 "ports": [],
+                                "dynamicports": [],
                                 "children": []
                             }
                         ]
@@ -239,12 +335,23 @@
                         "id": "4a36203d-c44b-ba66-8712-63ea14bfaae1",
                         "type": "Javascript2",
                         "label": "Array proper",
-                        "x": 69.1342866816045,
-                        "y": 784.1456613577479,
+                        "x": -60.930935651194176,
+                        "y": 1132.4942568229826,
                         "parameters": {
                             "code": "script({\n\t// The input ports of the Javascript node, name of input and type\n\tinputs:{\n\t    // ExampleInput:'number',\n\t    // Available types are 'number', 'string', 'boolean', 'color'\n\t    //myNumber:'number',\n\t},\n\t\n\t// The output ports of the Javascript node, name of output and type\n\toutputs:{\n\t    items: \"array\"\n\t},\n\t\n\t// Declare signal handle functions here, each function will be \n\t// exposed as a signal input to this node.\n\tsignals:{\n\t\t// mySignal:function() {   }\n\t},\n\t\n\t// These functions will be called when the correspinding input\n\t// is changed and the new value is provided\n\tchanged:{\n\t\t// myNumber:function(value) { }\n\t},\n\t\n\t// Here you can declare any function that will then be available\n\t// in this. So you can acces the function below with this.aFunction()\n\tmethods:{\n\t\t// aFunction:function(value) { }\n\t},\n\tsetup: function(){\n\t    this.setOutputs({\n\t        items: [\n\t            { key: 'angular', text: 'Angular', value: 'angular' },\n                { key: 'css', text: 'CSS', value: 'css' },\n                { key: 'design', text: 'Graphic Design', value: 'design' }\n            ]\n\t    });\n\t}\n})\n"
                         },
                         "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "items",
+                                "type": {
+                                    "name": "array"
+                                },
+                                "plug": "output",
+                                "group": "Outputs",
+                                "index": 2
+                            }
+                        ],
                         "children": []
                     },
                     {
@@ -257,6 +364,61 @@
                             "code": "script({\n\toutputs:{\n\t    items: \"array\"\n\t},\n\tsetup: function(){\n\t    this.setOutputs({\n\t        items: [\n\t            { key: 'home', content: 'Root', link: true, href:\"#\" },\n            \t{ key: 'category', content: 'Category', link: true, href:\"#/category/indoor\" },\n            \t{ key: 'family', content: 'Family', link: true, href:\"#/family/lighting\" },\n            \t{ key: 'group', content: 'Group', link: true, href:\"#/group/lamps\" },\n            \t{ key: 'product', content: 'Nice lamp', active: true }\n            ]\n\t    });\n\t}\n})\n"
                         },
                         "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "items",
+                                "type": {
+                                    "name": "array"
+                                },
+                                "plug": "output",
+                                "group": "Outputs",
+                                "index": 2
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "d6d7e4d6-2c63-0557-2c75-b9fcfca2156f",
+                        "type": "String",
+                        "x": 621.0343561002139,
+                        "y": 1090.3468669058234,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "9d8d8c3f-4a59-bc37-d38f-04a924c973d9",
+                        "type": "Number",
+                        "x": -67.7205944307193,
+                        "y": 632.7566118175657,
+                        "parameters": {
+                            "value": 2.245
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "a42cd1a5-6014-a2dc-a534-d079b1f3c04c",
+                        "type": "Number",
+                        "x": -75.6376079640201,
+                        "y": 777.5248592836373,
+                        "parameters": {
+                            "value": 8
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "4efe8b1e-8271-37fb-dcac-427a496fef65",
+                        "type": "Boolean",
+                        "x": 786.1858652324374,
+                        "y": 791.0968824835816,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
                         "children": []
                     }
                 ]

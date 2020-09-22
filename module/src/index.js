@@ -253,21 +253,78 @@ const SelectionNode = Noodl.defineReactNode({
 
 function RangeComponent(props) {	
 
+	let lowPropCache = 0;
+	let highPropCache = 100;
+	
 	const settings = {
-		start: [props.min*100,props.max*100],
+		start: [
+			props.low*100 >= props.min*100 ? props.low*100 : props.min*100,
+			props.high*100 <= props.max*100 ? props.high*100 : props.max*100
+		],
 		min: props.min*100,
 		max: props.max*100,
 		step: 1,
 		onChange: props.onChange
 	};
+	
+	const [value, setValue] = useState([
+		props.low*100 >= props.min*100 ? props.low*100 : props.min*100, 
+		props.high*100 <= props.max*100 ? props.high*100 : props.max*100]);
+	
+	props.onChange && props.onChange([props.min*100,props.max*100]);
+
+
 
 	let disabled = props.min === props.max;
 
+	useEffect(() => {
+		
+
+		let lowValue;
+		let highValue;
+		if(lowPropCache !== props.low*100) {
+			lowPropCache = lowValue = props.low*100 >= props.min*100 ? props.low*100 : props.min*100;
+		} else {
+			lowValue = value[0];
+		}
+		if(highPropCache !== props.high*100) {
+			highPropCache = highValue = props.high*100 <= props.max*100 ? props.high*100 : props.max*100;
+		} else {
+			highValue = value[1];
+		}
+
+		//console.log(lowValue,highValue);
+
+		setValue([
+			lowValue,
+			highValue
+		])
+
+		props.onChange(value);
+
+	}, [props.reset,props.low,props.high]);
+
+	useEffect(() => {
+		
+		setValue([
+			props.min*100,
+			props.max*100
+		])
+
+		props.onReset && props.onReset();
+		props.onChange(value);
+
+	}, [props.reset]);
+
+
+
 	return <Slider
+				value={value} 
 				multiple
 				color="teal"
 				disabled={disabled}
-				settings={settings} />
+				settings={settings}
+				 />
 }
 
 
@@ -280,18 +337,24 @@ const RangeNode = Noodl.defineReactNode({
 	initialize() {
 		this.props.onChange = value => {
 			this.setOutputs({
-				onLowValueChange: value[0]/100,
-				onHighValueChange: value[1]/100
+				onLowValueChange: Math.round(value[0])/100,
+				onHighValueChange: Math.round(value[1])/100
 			});
 		}
 	},
 	inputProps: {
 		min: {type: "number",default: 0},
-		max: {type: "number",default: 100}
+		max: {type: "number",default: 100},
+		low: {type: "number",default: 0},
+		high: {type: "number",default: 100},
+		reset: {type: "boolean"}
 	},
 	outputs: {
 		onLowValueChange: {type: 'number', displayName: 'Low value'},
 		onHighValueChange: {type: 'number', displayName: 'High value'}
+	},
+	outputProps: {
+		onReset: {type: 'signal',displayName: "Reset"}
 	}
 })
 
