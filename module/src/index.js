@@ -250,12 +250,20 @@ const SelectionNode = Noodl.defineReactNode({
 	}
 })
 
+function numDigits(x) {
+	return Math.max(Math.floor(Math.log10(Math.abs(x))), 0) + 1;
+}
 
 function RangeComponent(props) {	
 
 	let lowPropCache = 0;
 	let highPropCache = 100;
-	
+	let step = "1";
+	if(props.min < props.max) step = "1" + new Array(numDigits(props.max*100)-2).join("0");
+	//console.log(numDigits(props.max));
+
+	let ignoreFirst = true;
+
 	const settings = {
 		start: [
 			props.low*100 >= props.min*100 ? props.low*100 : props.min*100,
@@ -263,17 +271,24 @@ function RangeComponent(props) {
 		],
 		min: props.min*100,
 		max: props.max*100,
-		step: 1,
-		onChange: props.onChange
+		step: step,
+		onChange: onChange
 	};
 	
 	const [value, setValue] = useState([
 		props.low*100 >= props.min*100 ? props.low*100 : props.min*100, 
 		props.high*100 <= props.max*100 ? props.high*100 : props.max*100]);
 	
-	props.onChange && props.onChange([props.min*100,props.max*100]);
+	props.onChange && props.onChange(value);
 
 
+	function onChange(value) {
+
+		props.onChange(value);
+
+		!ignoreFirst && props.valueChanged && props.valueChanged();
+		ignoreFirst = false;
+	}
 
 	let disabled = props.min === props.max;
 
@@ -293,8 +308,6 @@ function RangeComponent(props) {
 			highValue = value[1];
 		}
 
-		//console.log(lowValue,highValue);
-
 		setValue([
 			lowValue,
 			highValue
@@ -302,7 +315,7 @@ function RangeComponent(props) {
 
 		props.onChange(value);
 
-	}, [props.reset,props.low,props.high]);
+	}, [props.low,props.high]);
 
 	useEffect(() => {
 		
@@ -354,7 +367,8 @@ const RangeNode = Noodl.defineReactNode({
 		onHighValueChange: {type: 'number', displayName: 'High value'}
 	},
 	outputProps: {
-		onReset: {type: 'signal',displayName: "Reset"}
+		onReset: {type: 'signal'},
+		valueChanged: {type: 'signal',displayName: "Value changed"}
 	}
 })
 

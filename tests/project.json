@@ -49,28 +49,34 @@
                         "toProperty": "text"
                     },
                     {
-                        "fromId": "a42cd1a5-6014-a2dc-a534-d079b1f3c04c",
-                        "fromProperty": "savedValue",
-                        "toId": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
-                        "toProperty": "max"
+                        "fromId": "1f38a81a-17ef-d611-526e-78609e0c2e10",
+                        "fromProperty": "onLowValueChange",
+                        "toId": "c13c7441-d3ff-1031-0fa2-b36b9083bc8d",
+                        "toProperty": "text"
                     },
                     {
-                        "fromId": "9d8d8c3f-4a59-bc37-d38f-04a924c973d9",
-                        "fromProperty": "savedValue",
-                        "toId": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
-                        "toProperty": "min"
+                        "fromId": "1f38a81a-17ef-d611-526e-78609e0c2e10",
+                        "fromProperty": "onHighValueChange",
+                        "toId": "4534902e-52af-1b58-c290-1efd79c55527",
+                        "toProperty": "text"
                     },
                     {
-                        "fromId": "a1c20e36-963d-b9d4-100f-8139f74d2132",
-                        "fromProperty": "onClick",
-                        "toId": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
-                        "toProperty": "reset"
-                    },
-                    {
-                        "fromId": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
-                        "fromProperty": "onReset",
-                        "toId": "4efe8b1e-8271-37fb-dcac-427a496fef65",
+                        "fromId": "1f38a81a-17ef-d611-526e-78609e0c2e10",
+                        "fromProperty": "valueChanged",
+                        "toId": "a125a0f8-38dd-c64a-5ab8-0bd2b5f0daa6",
                         "toProperty": "value"
+                    },
+                    {
+                        "fromId": "77dbb9e8-0071-6439-67bc-08c008db260e",
+                        "fromProperty": "savedValue",
+                        "toId": "1f38a81a-17ef-d611-526e-78609e0c2e10",
+                        "toProperty": "low"
+                    },
+                    {
+                        "fromId": "77dbb9e8-0071-6439-67bc-08c008db260e",
+                        "fromProperty": "savedValue",
+                        "toId": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
+                        "toProperty": "low"
                     }
                 ],
                 "roots": [
@@ -221,10 +227,67 @@
                                 "dynamicports": [],
                                 "children": [
                                     {
-                                        "id": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
+                                        "id": "1f38a81a-17ef-d611-526e-78609e0c2e10",
                                         "type": "Range | Semantic UI",
                                         "x": 20,
                                         "y": 46,
+                                        "parameters": {
+                                            "low": 10
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "9af90bd4-57be-07b2-2570-51dceeed60ed",
+                                        "type": "Group",
+                                        "x": 493.25636450030834,
+                                        "y": 773.0008515503225,
+                                        "parameters": {
+                                            "flexDirection": "row"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": [
+                                            {
+                                                "id": "c13c7441-d3ff-1031-0fa2-b36b9083bc8d",
+                                                "type": "Text",
+                                                "x": 426,
+                                                "y": 825,
+                                                "parameters": {
+                                                    "width": {
+                                                        "value": 50,
+                                                        "unit": "%"
+                                                    }
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            },
+                                            {
+                                                "id": "4534902e-52af-1b58-c290-1efd79c55527",
+                                                "type": "Text",
+                                                "x": 20,
+                                                "y": 128,
+                                                "parameters": {
+                                                    "width": {
+                                                        "value": 50,
+                                                        "unit": "%"
+                                                    },
+                                                    "alignX": "right",
+                                                    "textAlignX": "right"
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
+                                        "type": "Range | Semantic UI",
+                                        "x": 20,
+                                        "y": 398,
                                         "parameters": {},
                                         "ports": [],
                                         "dynamicports": [],
@@ -234,7 +297,7 @@
                                         "id": "8626efe5-4b5c-acb2-9f81-2d4ad363a903",
                                         "type": "Group",
                                         "x": 20,
-                                        "y": 148,
+                                        "y": 520,
                                         "parameters": {
                                             "flexDirection": "row"
                                         },
@@ -380,33 +443,9 @@
                     {
                         "id": "d6d7e4d6-2c63-0557-2c75-b9fcfca2156f",
                         "type": "String",
-                        "x": 621.0343561002139,
-                        "y": 1090.3468669058234,
+                        "x": 681.0343561002139,
+                        "y": 1297.3468669058234,
                         "parameters": {},
-                        "ports": [],
-                        "dynamicports": [],
-                        "children": []
-                    },
-                    {
-                        "id": "9d8d8c3f-4a59-bc37-d38f-04a924c973d9",
-                        "type": "Number",
-                        "x": -67.7205944307193,
-                        "y": 632.7566118175657,
-                        "parameters": {
-                            "value": 2.245
-                        },
-                        "ports": [],
-                        "dynamicports": [],
-                        "children": []
-                    },
-                    {
-                        "id": "a42cd1a5-6014-a2dc-a534-d079b1f3c04c",
-                        "type": "Number",
-                        "x": -75.6376079640201,
-                        "y": 777.5248592836373,
-                        "parameters": {
-                            "value": 8
-                        },
                         "ports": [],
                         "dynamicports": [],
                         "children": []
@@ -417,6 +456,28 @@
                         "x": 786.1858652324374,
                         "y": 791.0968824835816,
                         "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "a125a0f8-38dd-c64a-5ab8-0bd2b5f0daa6",
+                        "type": "Boolean",
+                        "x": 824.6399309656126,
+                        "y": 621.4465924842789,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "77dbb9e8-0071-6439-67bc-08c008db260e",
+                        "type": "Number",
+                        "x": -99.38864856392252,
+                        "y": 692.699714283986,
+                        "parameters": {
+                            "value": 2
+                        },
                         "ports": [],
                         "dynamicports": [],
                         "children": []
