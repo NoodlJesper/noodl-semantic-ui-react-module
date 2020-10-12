@@ -7,12 +7,6 @@
             "graph": {
                 "connections": [
                     {
-                        "fromId": "4a36203d-c44b-ba66-8712-63ea14bfaae1",
-                        "fromProperty": "items",
-                        "toId": "f2f895a6-e22f-2736-0375-f92c22cbf2ab",
-                        "toProperty": "items"
-                    },
-                    {
                         "fromId": "8e2b60b4-fc6b-a844-25f1-1754a18a1de2",
                         "fromProperty": "items",
                         "toId": "d36504ee-65d2-ecd5-1754-a68b9de940bd",
@@ -77,6 +71,42 @@
                         "fromProperty": "savedValue",
                         "toId": "d88f798d-d0a9-c4df-04d2-a59f150d3e3b",
                         "toProperty": "low"
+                    },
+                    {
+                        "fromId": "248be99a-1f55-4999-df47-5d9628604225",
+                        "fromProperty": "onClick",
+                        "toId": "7115d450-8046-b988-5e94-22973e1ba534",
+                        "toProperty": "clear"
+                    },
+                    {
+                        "fromId": "248be99a-1f55-4999-df47-5d9628604225",
+                        "fromProperty": "onClick",
+                        "toId": "f2f895a6-e22f-2736-0375-f92c22cbf2ab",
+                        "toProperty": "clear"
+                    },
+                    {
+                        "fromId": "f2f895a6-e22f-2736-0375-f92c22cbf2ab",
+                        "fromProperty": "cleared",
+                        "toId": "fec05de4-375a-2804-e761-3cd912114631",
+                        "toProperty": "input 0"
+                    },
+                    {
+                        "fromId": "f2f895a6-e22f-2736-0375-f92c22cbf2ab",
+                        "fromProperty": "valueChanged",
+                        "toId": "e7ab2b5f-40c4-2527-3979-fae5a1e8424b",
+                        "toProperty": "input 0"
+                    },
+                    {
+                        "fromId": "4a36203d-c44b-ba66-8712-63ea14bfaae1",
+                        "fromProperty": "items",
+                        "toId": "f2f895a6-e22f-2736-0375-f92c22cbf2ab",
+                        "toProperty": "items"
+                    },
+                    {
+                        "fromId": "f2f895a6-e22f-2736-0375-f92c22cbf2ab",
+                        "fromProperty": "onValueChange",
+                        "toId": "f531d584-cbf3-096e-2e20-b19124813847",
+                        "toProperty": "items"
                     }
                 ],
                 "roots": [
@@ -344,7 +374,7 @@
                                 "id": "7115d450-8046-b988-5e94-22973e1ba534",
                                 "type": "Selector | Semantic UI",
                                 "x": 20,
-                                "y": 464,
+                                "y": 1102,
                                 "parameters": {
                                     "size": "massive",
                                     "button": true,
@@ -352,7 +382,8 @@
                                     "icon": "filter",
                                     "floating": true,
                                     "clearable": true,
-                                    "value": ""
+                                    "value": "",
+                                    "clear": false
                                 },
                                 "ports": [],
                                 "dynamicports": [],
@@ -362,7 +393,7 @@
                                 "id": "f2f895a6-e22f-2736-0375-f92c22cbf2ab",
                                 "type": "Selector | Semantic UI",
                                 "x": 20,
-                                "y": 546,
+                                "y": 1204,
                                 "parameters": {
                                     "clearable": true,
                                     "selection": true,
@@ -373,24 +404,122 @@
                                     "floating": false,
                                     "compact": false,
                                     "multiple": true,
-                                    "icon": "search"
+                                    "icon": "search",
+                                    "clear": false
                                 },
                                 "ports": [],
                                 "dynamicports": [],
                                 "children": []
                             },
                             {
-                                "id": "2e0031f3-8bae-3be3-ecd1-0b04adc6740a",
-                                "type": "Selector | Semantic UI",
+                                "id": "bd1d881b-9b3e-9d09-2548-0bc07e6961b3",
+                                "type": "Group",
                                 "x": 20,
-                                "y": 628,
+                                "y": 1266,
                                 "parameters": {
-                                    "floating": true,
-                                    "compact": false
+                                    "sizeMode": "contentSize",
+                                    "height": {
+                                        "value": 36,
+                                        "unit": "px"
+                                    }
                                 },
                                 "ports": [],
                                 "dynamicports": [],
-                                "children": []
+                                "children": [
+                                    {
+                                        "id": "2e0031f3-8bae-3be3-ecd1-0b04adc6740a",
+                                        "type": "Selector | Semantic UI",
+                                        "x": 20,
+                                        "y": 46,
+                                        "parameters": {
+                                            "selection": false,
+                                            "button": true,
+                                            "loading": true,
+                                            "disabled": false
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "248be99a-1f55-4999-df47-5d9628604225",
+                                "type": "Group",
+                                "x": 20,
+                                "y": 1394,
+                                "parameters": {
+                                    "flexDirection": "row",
+                                    "sizeMode": "contentSize",
+                                    "marginTop": {
+                                        "value": 12,
+                                        "unit": "px"
+                                    }
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "64b0ffa6-7ed4-11f7-c7c0-0f1bcc530b81",
+                                        "type": "Flag | Semantic UI",
+                                        "x": 406.1961843086117,
+                                        "y": 1715.5790136973637,
+                                        "parameters": {
+                                            "name": "se"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "46960aca-f9ac-2895-f1db-3eced02f679c",
+                                        "type": "Flag | Semantic UI",
+                                        "x": 395,
+                                        "y": 1764,
+                                        "parameters": {
+                                            "name": "denmark"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "b9888246-1085-f379-8fa7-234c624d5754",
+                                        "type": "Flag | Semantic UI",
+                                        "x": 395,
+                                        "y": 1810,
+                                        "parameters": {
+                                            "name": "no"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "55dd7b4a-3828-7610-1be1-0fe9e7467b21",
+                                        "type": "Flag | Semantic UI",
+                                        "x": 395,
+                                        "y": 1856,
+                                        "parameters": {
+                                            "name": "fi"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "98c82e57-bd67-05ac-405e-c53547fe7ea8",
+                                        "type": "Flag | Semantic UI",
+                                        "x": 469.1774166315423,
+                                        "y": 1689.6638602918251,
+                                        "parameters": {
+                                            "name": "iceland"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -478,6 +607,36 @@
                         "parameters": {
                             "value": 2
                         },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "fec05de4-375a-2804-e761-3cd912114631",
+                        "type": "Signal To Index",
+                        "x": 678.2162688621138,
+                        "y": 1573.9752347524563,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "e7ab2b5f-40c4-2527-3979-fae5a1e8424b",
+                        "type": "Signal To Index",
+                        "x": 678.4097176857969,
+                        "y": 1489.0345735839765,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "f531d584-cbf3-096e-2e20-b19124813847",
+                        "type": "Collection",
+                        "x": 694.1210876831846,
+                        "y": 1416.6210929866747,
+                        "parameters": {},
                         "ports": [],
                         "dynamicports": [],
                         "children": []

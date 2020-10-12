@@ -1,5 +1,5 @@
 const Noodl = require('@noodl/noodl-sdk');
-import { Button, Dropdown, Icon, Breadcrumb, Search } from 'semantic-ui-react'
+import { Button, Dropdown, Icon, Breadcrumb, Search, Flag } from 'semantic-ui-react'
 import { Slider } from "react-semantic-ui-range";
 import {useEffect,useState} from "react";
 //import 'semantic-ui-css/semantic.min.css';
@@ -167,6 +167,24 @@ function SelectionComponent(props) {
 	}, [props.value]);
 
 
+	useEffect(() => {
+		if(!props.clear) return;
+		let diff = false;
+		if(props.multiple) {
+			val = [];
+			if(value.length > 0) diff = true;
+		} else {
+			val = "";
+			if(value.length !== "") diff = true;
+		}
+		if(diff){
+			setValue(val);
+			props.onValueChange && props.onValueChange(value);
+			props.valueChanged && props.valueChanged();
+		}
+		props.cleared && props.cleared();
+	}, [props.clear]);
+
 	const handleChange = (e, { value }) => {
 		
 		if(props.multiple) {
@@ -239,8 +257,8 @@ const SelectionNode = Noodl.defineReactNode({
 		disabled: {type: "boolean", default: false},
 		compact: {type: "boolean", default: false},
 		floating: {type: "boolean", default: false},
-
 		button: {type: "boolean", default: false},
+		clear: {type: "boolean"},
 	},
 	outputProps: {
 		onValueChange: {type: 'array', displayName: 'Values'},
@@ -409,13 +427,20 @@ const BreadcrumbNode = Noodl.defineReactNode({
 	}
 })
 
+const FlagNode = Noodl.defineReactNode({
+	name: 'Flag | Semantic UI',
+	category: 'Semantic UI',
+	getReactComponent() {return Flag;},
+	inputProps: {name: {type:"string"}}
+})
 
 Noodl.defineModule({
     reactNodes: [
 		ButtonNode,
 		SelectionNode,
 		RangeNode,
-		BreadcrumbNode
+		BreadcrumbNode,
+		FlagNode
     ],
     nodes:[
     ],
