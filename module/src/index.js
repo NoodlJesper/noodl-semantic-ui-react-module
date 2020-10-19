@@ -1,5 +1,5 @@
 const Noodl = require('@noodl/noodl-sdk');
-import { Button, Dropdown, Icon, Breadcrumb, Search, Flag } from 'semantic-ui-react'
+import { Button, Dropdown, Icon, Breadcrumb, Search, Flag, Input } from 'semantic-ui-react'
 import { Slider } from "react-semantic-ui-range";
 import {useEffect,useState} from "react";
 //import 'semantic-ui-css/semantic.min.css';
@@ -434,8 +434,138 @@ const FlagNode = Noodl.defineReactNode({
 	inputProps: {name: {type:"string"}}
 })
 
+
+
+
+const InputNode = Noodl.defineReactNode({
+	name: 'Input | Semantic UI',
+	category: 'Semantic UI',
+	getReactComponent() {
+		return (props) => {
+
+
+			const [value, setValue] = useState(props.inValue);
+
+			useEffect(() => {
+				setValue(props.inValue);
+				props.onChange && props.onChange();
+				props.onValue && props.onValue(value);
+			}, [props.inValue]);
+
+			const handleChange = (e, { value }) => {
+				setValue(value);
+				props.onChange && props.onChange();
+				props.onValue && props.onValue(value);
+			};
+		
+			return <Input {...props} value={value} onChange={handleChange}></Input>
+		}
+	},
+	inputProps: {
+		placeholder: {
+			type:"string"
+		},
+		inValue: {
+			type: "string",
+			default: "",
+			displayName: "value"
+		},
+		size: {
+			type: 	{
+				name: 'enum',
+				enums: SemanticSizeEnum
+			},
+			default: "medium"
+		},
+		type: {
+			type: 	{
+				name: 'enum',
+				enums: [
+					{value: "text",label:"Text"},
+					{value: "number",label:"Number"}
+				]
+			},
+			default: "text"
+		},
+		loading: {
+			type: "boolean"
+		},
+		// showLabel: {
+		// 	type: "boolean"
+		// },
+		// label: {
+		// 	type: "string"
+		// },
+		// labelPosition: {
+		// 	type: 	{
+		// 		name: 'enum',
+		// 		enums: [
+		// 			{value: "right", label: "Right"},
+		// 			{value: "left", label: "Left"}
+		// 		]
+		// 	},
+		// 	default: "right"
+		// },
+		// showAction: {
+		// 	type: "boolean"
+		// },
+		// action: {
+		// 	type: "string"
+		// },
+		// actionPosition: {
+		// 	type: 	{
+		// 		name: 'enum',
+		// 		enums: [
+		// 			{value: "right", label: "Right"},
+		// 			{value: "left", label: "Left"}
+		// 		]
+		// 	},
+		// 	default: "right"
+		// },
+		// showIcon: {
+		// 	type: "boolean",
+		// 	default: false
+		// },
+		// icon: {
+		// 	type: "string"
+		// },
+		// iconPosition: {
+		// 	type: 	{
+		// 		name: 'enum',
+		// 		enums: [
+		// 			{value: "right", label: "Right"},
+		// 			{value: "left", label: "Left"}
+		// 		]
+		// 	},
+		// 	default: "right"
+		// },
+		disabled: {
+			type: "boolean"
+		},
+		error: {
+			type: "boolean"
+		},
+		transparent: {
+			type: "boolean"
+		},
+		fluid: {
+			type: "boolean"
+		},
+		
+	},
+	outputProps: {
+		onChange: {type: 'signal', displayName:"changed"},
+		onValue: {type: 'string', displayName:"value"}
+	},
+	// dynamicports: [{
+	// 	condition: 'showIcon = true',
+	// 	inputs: ['icon']
+    // }]
+})
+
 Noodl.defineModule({
     reactNodes: [
+		InputNode,
 		ButtonNode,
 		SelectionNode,
 		RangeNode,

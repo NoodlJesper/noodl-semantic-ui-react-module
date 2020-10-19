@@ -520,6 +520,32 @@
                                         "children": []
                                     }
                                 ]
+                            },
+                            {
+                                "id": "3666ba0c-0255-2a1e-857a-639f04162992",
+                                "type": "Group",
+                                "x": 20,
+                                "y": 1786,
+                                "parameters": {
+                                    "marginTop": {
+                                        "value": 15,
+                                        "unit": "px"
+                                    }
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "b717ee7f-0a2b-90ce-0504-a6da12f0ec00",
+                                        "type": "Input | Semantic UI",
+                                        "x": 20,
+                                        "y": 46,
+                                        "parameters": {},
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -636,6 +662,16 @@
                         "type": "Collection",
                         "x": 694.1210876831846,
                         "y": 1416.6210929866747,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "edf11695-52b8-1048-b3c5-ab042ff33c77",
+                        "type": "Switch",
+                        "x": 748.104633974727,
+                        "y": 2086.38989722702,
                         "parameters": {},
                         "ports": [],
                         "dynamicports": [],
